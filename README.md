@@ -1,8 +1,8 @@
-The aim of the project is to find out what tools we are best used when developing javascript project.
-=====================================================================================================
+## The aim of the project is to find out what tools we are best used when developing javascript project.
 
-Installation.
--------------
+
+### Installation.
+
 1. Intstall [nodejs](http://nodejs.org/) make sure to check the npm option and allow node installation to add it to path.
 2. Install bower -- open cmd and type 'npm install -g bower'
 3. Open cmd in this project location and type 'bower update', this will install all client side dependencies at
