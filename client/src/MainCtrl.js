@@ -1,5 +1,5 @@
 "use strict";
-var app = angular.module('myApp', []);
+var app = angular.module('myApp');
 
 /* Set up a simple controller with a few
  * examples of common actions a controller function

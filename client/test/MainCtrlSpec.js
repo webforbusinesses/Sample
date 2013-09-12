@@ -1,3 +1,4 @@
+"use strict";
 describe('Testing a controller', function () {
     var $scope = null;
     var ctrl = null;
@@ -14,13 +15,16 @@ describe('Testing a controller', function () {
     };
 
     //you need to indicate your module in a test
-    beforeEach(module('myApp'));
+    beforeEach(angular.mock.module('myApp'));
+    // it can be replace with the shorter but more cryptic
+    // beforeEach(module('myApp'))
+    // see http://docs.angularjs.org/api/angular.mock.module
 
     /* IMPORTANT!
      * this is where we're setting up the $scope and
      * calling the controller function on it, injecting
      * all the important bits, like our mockService */
-    beforeEach(inject(function ($rootScope, $controller) {
+    beforeEach(angular.mock.inject(function ($rootScope, $controller) {
         //create a scope object for us to use.
         $scope = $rootScope.$new();
 
