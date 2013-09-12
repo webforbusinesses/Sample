@@ -4,7 +4,7 @@
     "description": "1. Intstall [nodejs](http://nodejs.org/) make sure to check the npm option and allow node installation to add it to path.\r 2. Install [bower](http://bower.io/) a package manager for the web,  open cmd and type 'npm install -g bower'\r 3. Install [grunt](http://gruntjs.com/) the JavaScript Task Runner, type 'npm install -g grunt-cli'\r 4. Install karma (jasmin tests runner) 'npm install -g karma'",
     "main": " ",
     "scripts": {
-        "test": "./node_modules/.bin/karma start --single-run --browsers Firefox"
+        "test": "karma start --single-run --browsers PhantomJS --log-level debug"
     },
     "repository": {
         "type": "git",
