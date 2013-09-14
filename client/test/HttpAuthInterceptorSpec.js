@@ -1,31 +1,36 @@
 "use strict";
 
-describe('HttpAuthInterceptor tests', function () {
+describe('HttpAuthInterceptor End to End test', function () {
     var http;
     var rootScope;
     var authorized = false;
+    var as;
 
     function httpBackEndConfigure($httpBackend) {
 
+        //noinspection JSUnusedLocalSymbols
         $httpBackend.whenPOST('auth/login').respond(function (method, url, data) {
             authorized = true;
-            console.info("authorized = true");
             return [200];
         });
+
+        //noinspection JSUnusedLocalSymbols
         $httpBackend.whenPOST('auth/logout').respond(function (method, url, data) {
             authorized = false;
             return [200];
         });
 
+        //noinspection JSUnusedLocalSymbols
         $httpBackend.whenGET('data/public').respond(function (method, url, data) {
             return [200, 'I have received and processed your data [' + data + '].'];
         });
+
+        //noinspection JSUnusedLocalSymbols
         $httpBackend.whenGET('data/protected').respond(function (method, url, data) {
             return authorized ? [200, 'This is confidential [' + data + '].'] : [401];
         });
 
         //otherwise
-
         $httpBackend.whenGET(/.*/).passThrough();
     }
 
@@ -37,25 +42,23 @@ describe('HttpAuthInterceptor tests', function () {
 
 
     var userService = angular.module('userService', ['httpAuthInterceptor']);
-    userService.factory('http', function ($http, $rootScope) {
+    userService.factory('http', function ($http, $rootScope, authService) {
         rootScope = $rootScope;
+        as = authService;
         return $http;
     });
 
     beforeEach(function () {
         var $injector = angular.injector(['ng', 'userService']);
         http = $injector.get('http'); // load the service and get http;
-//        authService = $injector.get('authService'); // load the service and get http;
     });
 
 
-    it("a dummy test", function () {
+    iit("Return restricted request only after login", function () {
         var flag;
-        console.info("about to get data");
         runs(function () {
             flag = false;
             http.get('data/public').then(function () {
-                console.info("get data/public returns", arguments);
                 flag = true;
             });
 
@@ -64,25 +67,30 @@ describe('HttpAuthInterceptor tests', function () {
             return flag;
         }, "should get the data", 1000);
 
-        rootScope.$apply(function () {
-            rootScope.$on('event:auth-loginRequired', function () {
-                console.log("event:auth-loginRequired", arguments);
-            });
-        });
 
         var good = "no";
         runs(function () {
             http.get('data/protected').then(function () {
-                console.info("******* get data/protected returns");
                 good = "yes";
             });
         });
 
         runs(function () {
             flag = false;
+            http.get('data/public').then(function () {
+                flag = true;
+            });
+
+        });
+        waitsFor(function () {
+            return flag && (good == 'no');
+        }, "should get the data from public but not get the private date", 1000);
+
+
+        runs(function () {
+            flag = false;
             http.post('auth/login').then(function () {
-                console.info('login confirmed');
-                rootScope.$broadcast('event:auth-loginConfirmed');
+                as.loginConfirmed();
                 flag = true;
             });
         });
@@ -93,8 +101,6 @@ describe('HttpAuthInterceptor tests', function () {
 
         waitsFor(function(){
             return good == "yes";
-        }, "should return the original protected data", 1000);
-
-
+        }, "should return the original protected request after login", 1000);
     });
 });
