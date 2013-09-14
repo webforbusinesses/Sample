@@ -54,7 +54,7 @@ describe('HttpAuthInterceptor End to End test', function () {
     });
 
 
-    iit("Return restricted request only after login", function () {
+    it("Return restricted request only after login", function () {
         var flag;
         runs(function () {
             flag = false;
