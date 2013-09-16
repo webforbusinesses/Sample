@@ -1,4 +1,7 @@
-"use strict";
-function helloWorld() {
-    return "Hello world!";
-}
+var helloWorld;
+(function () {
+    "use strict";
+    helloWorld = function() {
+        return "Hello world!";
+    };
+})();

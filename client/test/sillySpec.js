@@ -1,7 +1,10 @@
-"use strict";
+(function () {
 
-describe("Hello world", function() {
-    it("says hello", function() {
-        expect(helloWorld()).toEqual("Hello world!");
+    "use strict";
+
+    describe("Hello world", function () {
+        it("says hello", function () {
+            expect(helloWorld()).toEqual("Hello world!");
+        });
     });
-});
+})();

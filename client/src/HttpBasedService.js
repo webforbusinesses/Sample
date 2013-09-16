@@ -1,14 +1,18 @@
-"use strict";
+(function () {
 
-var app = angular.module('myApp');
+    "use strict";
 
-app.factory('HttpBasedService', function ($http) {
-    return {
-        sendMessage: function (msg) {
-            return $http.get('somthing.json?msg=' + msg)
-                .then(function (result) {
-                    return result.data;
-                });
-        }
-    };
-});
+    var app = angular.module('myApp');
+
+    app.factory('HttpBasedService', function ($http) {
+        return {
+            sendMessage: function (msg) {
+                return $http.get('somthing.json?msg=' + msg)
+                    .then(function (result) {
+                        return result.data;
+                    });
+            }
+        };
+    });
+
+})();

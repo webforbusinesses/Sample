@@ -33,7 +33,7 @@
                 $rootScope.$broadcast('event:auth-loginConfirmed');
                 httpBuffer.retryAll();
             }
-        }
+        };
     });
 
 

@@ -1,29 +1,30 @@
 {
-    "name": "Sample",
-    "version": "0.0.0",
-    "description": "1. Intstall [nodejs](http://nodejs.org/) make sure to check the npm option and allow node installation to add it to path.\r 2. Install [bower](http://bower.io/) a package manager for the web,  open cmd and type 'npm install -g bower'\r 3. Install [grunt](http://gruntjs.com/) the JavaScript Task Runner, type 'npm install -g grunt-cli'\r 4. Install karma (jasmin tests runner) 'npm install -g karma'",
-    "main": " ",
-    "scripts": {
-        "test": "karma start --single-run --browsers Firefox"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/WebForBusinesses/Sample.git"
-    },
-    "author": "barak.bar@gmail.com",
-    "license": "BSD-2-Clause",
-    "bugs": {
-        "url": "https://github.com/WebForBusinesses/Sample/issues"
-    },
-    "devDependencies": {
-        "grunt": "~0.4.1",
-        "bower": "~1.2.2",
-        "karma": "~0.10",
-        "grunt-contrib-clean": "~0.5.0",
-        "grunt-contrib-compress": "~0.5.2",
-        "grunt-contrib-connect": "~0.3.0",
-        "grunt-contrib-copy": "~0.4.1",
-        "grunt-shell": "~0.3.1",
-        "grunt-karma": "~0.6.2"
-    }
+  "name": "Sample",
+  "version": "0.0.0",
+  "description": "1. Intstall [nodejs](http://nodejs.org/) make sure to check the npm option and allow node installation to add it to path.\r 2. Install [bower](http://bower.io/) a package manager for the web,  open cmd and type 'npm install -g bower'\r 3. Install [grunt](http://gruntjs.com/) the JavaScript Task Runner, type 'npm install -g grunt-cli'\r 4. Install karma (jasmin tests runner) 'npm install -g karma'",
+  "main": " ",
+  "scripts": {
+    "test": "karma start --single-run --browsers Firefox"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WebForBusinesses/Sample.git"
+  },
+  "author": "barak.bar@gmail.com",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/WebForBusinesses/Sample/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "bower": "~1.2.2",
+    "karma": "~0.10",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "~0.5.2",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-shell": "~0.3.1",
+    "grunt-karma": "~0.6.2",
+    "grunt-contrib-jshint": "~0.6.4"
+  }
 }
