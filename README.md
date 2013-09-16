@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/WebForBusinesses/Sample.png)](https://travis-ci.org/WebForBusinesses/Sample)
+[![Build Status](https://travis-ci.org/webforbusinesses/Sample.png)](https://travis-ci.org/webforbusinesses/Sample)
 
 
 ## The aim of the project is to find out what tools we are best used when developing javascript project.
