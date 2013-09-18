@@ -67,4 +67,21 @@
             }).toThrow();
         });
     });
+    describe("bind tests", function(){
+        it("should bind", function(){
+            function foo(){
+                /*jshint validthis: true */
+                return this;
+            }
+            var obj1 = {'foo': foo};
+            var obj2 = {'foo': foo};
+            expect(foo()).toBeUndefined();
+            expect(obj1.foo()).toBe(obj1);
+            expect(obj2.foo()).toBe(obj2);
+            var bound = foo.bind(obj1);
+            expect(bound()).toBe(obj1);
+            obj2.bound = bound;
+            expect(obj2.bound()).toBe(obj1);
+        });
+    });
 })();

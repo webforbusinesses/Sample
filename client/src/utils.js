@@ -28,5 +28,12 @@ var polyMethod;
             }
         };
     };
+    Function.prototype.bind = function bind(obj){
+        var fn = this;
+        return function(){
+            return fn.apply(obj, Array.prototype.slice(arguments));
+        };
+    };
+
 })();
 
