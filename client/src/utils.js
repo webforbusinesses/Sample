@@ -29,17 +29,17 @@ var wrap;
             }
         };
     };
-    Function.prototype.bind = function bind(obj){
+    Function.prototype.bind = function bind(obj) {
         var fn = this;
-        return function(){
+        return function () {
             return fn.apply(obj, Array.prototype.slice.call(arguments));
         };
     };
 
-    wrap = function wrap(obj, prop, fn){
+    wrap = function wrap(obj, prop, fn) {
         var old = obj[prop];
-        return obj[prop] = function(){
-            return fn.apply(obj, [old.bind(obj)].concat(Array.prototype.slice.call(arguments)));
+        return obj[prop] = function () {
+            return fn.apply(this, [old.bind(this)].concat(Array.prototype.slice.call(arguments)));
         };
     };
 })();
