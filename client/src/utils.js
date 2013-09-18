@@ -1,5 +1,6 @@
 var extend;
 var polyMethod;
+var wrap;
 
 (function () {
     "use strict";
@@ -18,7 +19,7 @@ var polyMethod;
     polyMethod = function polyMethod(obj, prop, fn) {
         var old = obj[prop];
         return obj[prop] = function () {
-            var args = Array.prototype.slice.call(arguments, 0);
+            var args = Array.prototype.slice.call(arguments);
             if (fn.length === arguments.length) {
                 return fn.apply(obj, args);
             } else if (old && typeof old === 'function') {
@@ -31,9 +32,15 @@ var polyMethod;
     Function.prototype.bind = function bind(obj){
         var fn = this;
         return function(){
-            return fn.apply(obj, Array.prototype.slice(arguments));
+            return fn.apply(obj, Array.prototype.slice.call(arguments));
         };
     };
 
+    wrap = function wrap(obj, prop, fn){
+        var old = obj[prop];
+        return obj[prop] = function(){
+            return fn.apply(obj, [old.bind(obj)].concat(Array.prototype.slice.call(arguments)));
+        };
+    };
 })();
 

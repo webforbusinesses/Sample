@@ -84,4 +84,14 @@
             expect(obj2.bound()).toBe(obj1);
         });
     });
+    describe("wrap tests", function(){
+        it("wrap identity over numbers", function(){
+            var obj = {'fn' : function( n ){ return n; }};
+            var wrapped = wrap(obj, 'fn', function(orig, n){ return n < 0 ? -n : orig(n);});
+            expect(wrapped(-1)).toEqual(1);
+            expect(wrapped(2)).toEqual(2);
+            expect(obj.fn(-1)).toEqual(1);
+            expect(obj.fn(2)).toEqual(2);
+        });
+    });
 })();
