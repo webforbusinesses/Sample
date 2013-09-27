@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../bower_components/bower-bootstrap-css/bootstrap.css">
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../src/ValidateEqualsApp.js"></script>
+    <!---->
+    <style>
+        body {
+            padding: 10px;
+        }
+
+        input.ng-invalid:focus, input.ng-invalid {
+            color: #b94a48;
+            border-color: #b94a48;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="ValidateEqualsApp">
+    <form name='testForm' class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label">Password</label>
+
+            <div class="controls">
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input name='password' type="password" ng-model='model.password' placeholder="password">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Validate</label>
+
+            <div class="controls">
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input name='validate' type="password" ng-model='model.passwordValidate' data-validate-equals='model.password'
+                       placeholder="validate password">
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
