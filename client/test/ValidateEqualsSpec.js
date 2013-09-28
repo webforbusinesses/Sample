@@ -21,13 +21,13 @@
                 element = linkFn($scope);
 
                 modelValue = $scope.model = {};
+                modelValue.compareTo = '';
                 modelController = $scope.testForm.testInput;
             });
         });
         describe('model value changed', function () {
             it('should be invalid if the model changes', function () {
                 modelValue.value = 'different';
-                modelValue.compareTo = '';
                 $scope.$digest();
                 expect(modelController.$valid).toBeFalsy();
                 expect(modelController.$viewValue).toBeUndefined();
