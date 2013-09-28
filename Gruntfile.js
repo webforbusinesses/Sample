@@ -30,6 +30,9 @@ module.exports = function(grunt) {
             chrome: {
                 browsers: ['Chrome']
             },
+            all: {
+                browsers: ['Chrome', "FireFox"]
+            },
             dev: {
                 reporters: 'dots'
             }
